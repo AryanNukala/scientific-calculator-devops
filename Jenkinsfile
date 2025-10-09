@@ -5,6 +5,7 @@ pipeline {
         DOCKER_IMAGE = 'aryannukala/scientific-calculator'
         DOCKER_TAG = 'latest'
         DOCKER_CREDENTIALS = 'dockerhub-credentials'
+        RECIPIENT_EMAIL = 'aryan.nukala123@gmail.com'
     }
     
     stages {
@@ -55,9 +56,15 @@ pipeline {
     post {
         success {
             echo 'Pipeline completed successfully!'
+            mail to: "${RECIPIENT_EMAIL}",
+                 subject: "SUCCESS: Scientific Calculator Pipeline",
+                 body: "Hi Aryan,\n\nThe Jenkins pipeline for Scientific Calculator has completed successfully.\n\nRegards,\nJenkins"
         }
         failure {
             echo 'Pipeline failed!'
+            mail to: "${RECIPIENT_EMAIL}",
+                 subject: "FAILURE: Scientific Calculator Pipeline",
+                 body: "Hi Aryan,\n\nThe Jenkins pipeline for Scientific Calculator has failed. Please check the Jenkins console output for details.\n\nRegards,\nJenkins"
         }
     }
 }
