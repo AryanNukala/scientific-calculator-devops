@@ -1,23 +1,25 @@
 - name: Deploy Scientific Calculator using Docker
   hosts: local
+  become: yes
   tasks:
     - name: Pull Docker image from Docker Hub
       docker_image:
         name: aryannukala/scientific-calculator
         tag: latest
         source: pull
-        
+
     - name: Stop and remove existing container if running
       docker_container:
         name: scientific-calculator-container
         state: absent
       ignore_errors: yes
-      
-    - name: Run Scientific Calculator container
+
+    - name: Run Scientific Calculator container in detached mode
       docker_container:
         name: scientific-calculator-container
         image: aryannukala/scientific-calculator:latest
         state: started
-        interactive: yes
+        restart_policy: unless-stopped
+        detach: yes
         tty: yes
-        detach: no
+        interactive: yes
