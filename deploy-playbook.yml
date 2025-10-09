@@ -1,7 +1,6 @@
 ---
 - name: Deploy Scientific Calculator using Docker
   hosts: local
-  become: yes
   tasks:
     - name: Pull Docker image from Docker Hub
       docker_image:
