@@ -1,5 +1,5 @@
 import math
-#for testing the webhok..
+#for testing the webhok.
 class ScientificCalculator:
     """Scientific Calculator with menu-driven operations"""
     
