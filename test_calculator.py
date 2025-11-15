@@ -9,11 +9,11 @@ class TestScientificCalculator(unittest.TestCase):
         """Set up test calculator instance"""
         self.calc = ScientificCalculator()
     
-    # Square Root Tests
-    # def test_square_root_positive(self):
-    #     """Test square root of positive number"""
-    #     result = self.calc.square_root(16)
-    #     self.assertEqual(result, 4.0)
+    Square Root Tests
+    def test_square_root_positive(self):
+        """Test square root of positive number"""
+        result = self.calc.square_root(16)
+        self.assertEqual(result, 4.0)
     
     def test_square_root_zero(self):
         """Test square root of zero"""
